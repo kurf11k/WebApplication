@@ -1,0 +1,32 @@
+﻿@model IQueryable<WebApplication.Models.Person>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="menu">
+    <button id="updateButton" class="btn btn-primary">
+        <span id="loading" class="spinner-border spinner-border-sm"></span>
+        Update persons
+    </button>
+
+</div>
+
+<div id="loaded" class="alert success">Persons are succesfully updated.</div>
+<div id="failed" class="alert fail">Error - Persons cannot be updated.</div>
+
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Name).Titled("Name");
+        columns.Add(model => model.LastName).Titled("LastName");
+        columns.Add(model => model.Date).Titled("Date").Formatted("{0:dd. MM. yyyy}").Filterable(GridFilterType.Double);
+        columns.Add(model => $"<a href=\"Person\\Edit\\{model.Id}\">Edit</a>").Encoded(false);
+        columns.Add(model => $"<a href=\"Person\\Delete\\{model.Id}\">Delete</a>").Encoded(false);
+    })
+    .Using(GridFilterMode.Excel)
+    .Empty("No data found")
+    .Filterable()
+    .Sortable()
+    .Pageable()
+)
