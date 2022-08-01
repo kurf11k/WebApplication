@@ -53,64 +53,7 @@ namespace WebApplication.Controllers
             return Json(status);
         }
 
-            /*
-            public async Task<IActionResult> Index(string sortOrder, string name, string lastname, string date)
-            {
-
-                ViewData["NameSortParm"] = sortOrder == "name_asc" ? "name_desc" : "name_asc";
-                ViewData["LastNameSortParm"] = sortOrder == "lastname_asc" ? "lastname_desc" : "lastname_asc";
-                ViewData["DateSortParm"] = sortOrder == "date_asc" ? "date_desc" : "date_asc";
-                var persons = from s in _context.Persons
-                               select s;
-
-                ViewData["FilterName"] = name;
-                if (!String.IsNullOrEmpty(name))
-                {
-                    persons = persons.Where(s => s.Name.Contains(name));
-                }
-
-                ViewData["FilterLastName"] = lastname;
-                if (!String.IsNullOrEmpty(lastname))
-                {
-                    persons = persons.Where(s => s.LastName.Contains(lastname));
-                }
-
-                ViewData["FilterDate"] = date;
-                if (!String.IsNullOrEmpty(date))
-                {
-                    persons = persons.Where(s => s.Date.ToShortDateString() == date);
-                }
-
-                switch (sortOrder)
-                {
-                    case "name_asc":
-                        persons = persons.OrderBy(s => s.Name);
-                        break;
-                    case "name_desc":
-                        persons = persons.OrderByDescending(s => s.Name);
-                        break;
-                    case "lastname_asc":
-                        persons = persons.OrderBy(s => s.LastName);
-                        break;
-                    case "lastname_desc":
-                        persons = persons.OrderByDescending(s => s.LastName);
-                        break;
-                    case "date_asc":
-                        persons = persons.OrderBy(s => s.Date);
-                        break;
-                    case "date_desc":
-                        persons = persons.OrderByDescending(s => s.Date);
-                        break;
-
-                    default:
-                        persons = persons.OrderBy(s => s.Id);
-                        break;
-                }
-                return View(await persons.AsNoTracking().ToListAsync());
-            }
-            */
-
-            // GET: Person/Details/5
+        // GET: Person/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
